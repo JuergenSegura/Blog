@@ -10,11 +10,11 @@ app.use(cors());
 
 const posts = {};
 
-app.get("/post", (req, res) => {
+app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/post", async (req, res) => {
+app.post("/posts", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
 
@@ -32,6 +32,12 @@ app.post("/post", async (req, res) => {
   });
 
   res.status(201).send(posts[id]);
+});
+
+app.post("/events", (req, res) => {
+  console.log("Received Event", req.body.type);
+
+  res.send({});
 });
 
 app.listen(4000, () => {
