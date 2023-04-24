@@ -14,13 +14,13 @@ app.get("/post/:id/comments", (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
 });
 
-app.post("/post/:id/comments", async(req, res) => {
+app.post("/post/:id/comments", async (req, res) => {
   const commentId = randomBytes(4).toString("hex");
   const { content } = req.body;
 
   const comments = commentsByPostId[req.params.id] || [];
 
-  comments.push({ id: commentId, content });
+  comments.push({ id: commentId, content, status: "Pending" });
 
   commentsByPostId[req.params.id] = comments;
 
