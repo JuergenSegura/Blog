@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
 const cors = require("cors");
 const axios = require("axios");
+const { log } = require("console");
 
 const app = express();
 app.use(bodyParser.json());
@@ -41,5 +42,6 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(4000, () => {
+  console.log('v2ccs0');
   console.log("Listening on 4000");
 });
